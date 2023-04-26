@@ -10,9 +10,6 @@ source:
 
 build:
   number: 0
-  # no pytorch on windows in conda-forge, see
-  # https://github.com/conda-forge/pytorch-cpu-feedstock/issues/32
-  skip: true  # [win]
   script:
     - export BUILD_S3=TRUE
     - export CMAKE_GENERATOR="Ninja"
