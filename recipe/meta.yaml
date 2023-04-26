@@ -12,8 +12,6 @@ build:
   number: 0
   skip: true  # [py<37]
   script:
-    - export BUILD_S3=TRUE
-    - export CMAKE_GENERATOR="Ninja"
     - export USE_SYSTEM_LIBS=TRUE
     - {{ PYTHON }} -m pip install . -vv
 
@@ -21,12 +19,10 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - cmake
-    - ninja
   host:
     - pip
     - python
     - pybind11
-    - aws-sdk-cpp
     - pytorch
     - setuptools
     - wheel
