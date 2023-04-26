@@ -10,6 +10,7 @@ source:
 
 build:
   number: 0
+  skip: true  # [py<37]
   script:
     - export BUILD_S3=TRUE
     - export CMAKE_GENERATOR="Ninja"
