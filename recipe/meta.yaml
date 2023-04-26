@@ -27,6 +27,8 @@ requirements:
     - pybind11
     - aws-sdk-cpp
     - pytorch
+    - setuptools
+    - wheel
   run:
     - python
     - requests
