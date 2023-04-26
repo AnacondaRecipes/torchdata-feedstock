@@ -42,7 +42,7 @@ test:
     - datasets
     - expecttest
     - fsspec
-    - numpy *
+    - numpy
     - s3fs
   source_files:
     - test/
