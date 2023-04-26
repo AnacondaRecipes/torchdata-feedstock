@@ -39,7 +39,6 @@ test:
   requires:
     - pip
     - pytest
-    - adlfs
     - datasets
     - expecttest
     - fsspec
