@@ -9,4 +9,6 @@ pytest -v --ignore=test_audio_examples.py \
 or test_fsspec_memory_list \
 or test_elastic_training_dl1_backend_gloo \
 or test_elastic_training_dl2_backend_gloo \
-or test_fsspec_io_iterdatapipe)"
+or test_fsspec_io_iterdatapipe \
+or test_online_iterdatapipe \
+or test_gdrive_iterdatapipe)"
