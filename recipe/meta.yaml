@@ -11,6 +11,7 @@ source:
 build:
   number: 0
   skip: true  # [py<37]
+  skip: true  # [win]
   script:
     - export USE_SYSTEM_LIBS=TRUE
     - {{ PYTHON }} -m pip install . -vv
