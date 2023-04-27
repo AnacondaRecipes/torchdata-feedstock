@@ -12,7 +12,7 @@ build:
   number: 0
   skip: true  # [py<37]
   skip: true  # [win or s390x]
-  skip: true  # [ppc64le and py>=3.11]
+  skip: true  # [ppc64le and py>=311]
   script:
     - export USE_SYSTEM_LIBS=TRUE
     - {{ PYTHON }} -m pip install . -vv
