@@ -49,7 +49,7 @@ test:
     - test/
 
 about:
-  home: https://github.com/pytorch/data
+  home: https://pytorch.org/
   summary: A PyTorch repo for data loading and utilities to be shared by the PyTorch domain libraries.
   description: |
     torchdata is a library of common modular data loading primitives for easily constructing flexible 
@@ -58,6 +58,9 @@ about:
   license_family: BSD
   license: BSD-3-Clause
   license_file: LICENSE
+  dev_url: https://github.com/pytorch/data
+  doc_url: https://pytorch.org/data/beta/index.html
+  doc_source_url: https://github.com/pytorch/data/tree/main/docs
 
 extra:
   recipe-maintainers:
