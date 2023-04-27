@@ -24,7 +24,6 @@ requirements:
   host:
     - pip
     - python
-    - pybind11
     - pytorch
     - setuptools
     - wheel
@@ -56,6 +55,8 @@ about:
     torchdata is a library of common modular data loading primitives for easily constructing flexible 
     and performant data pipelines. It aims to provide composable Iterable-style and Map-style building
     blocks called DataPipes that work well out of the box with the PyTorch's DataLoader.
+  license_family: BSD
+  license: BSD-3-Clause
   license_file: LICENSE
 
 extra:
