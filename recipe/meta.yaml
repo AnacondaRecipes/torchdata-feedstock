@@ -52,7 +52,10 @@ test:
 about:
   home: https://github.com/pytorch/data
   summary: A PyTorch repo for data loading and utilities to be shared by the PyTorch domain libraries.
-  license: BSD-3-Clause
+  description: |
+    torchdata is a library of common modular data loading primitives for easily constructing flexible 
+    and performant data pipelines. It aims to provide composable Iterable-style and Map-style building
+    blocks called DataPipes that work well out of the box with the PyTorch's DataLoader.
   license_file: LICENSE
 
 extra:
