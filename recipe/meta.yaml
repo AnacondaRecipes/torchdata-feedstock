@@ -24,7 +24,7 @@ requirements:
   host:
     - pip
     - python
-    - pytorch
+    - pytorch 1.13.1
     - setuptools
     - wheel
   run:
