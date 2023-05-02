@@ -9,13 +9,11 @@ source:
   sha256: 69d80bd33ce8f08e7cfeeb71cefddfc29cede25a85881e33dbae47576b96ed29
 
 build:
-  number: 2
-  # no pytorch on windows in conda-forge, see
-  # https://github.com/conda-forge/pytorch-cpu-feedstock/issues/32
+  number: 0
+  skip: true  # [py<37]
   skip: true  # [win]
+  skip: true  # [ppc64le and py>=311]
   script:
-    - export BUILD_S3=TRUE
-    - export CMAKE_GENERATOR="Ninja"
     - export USE_SYSTEM_LIBS=TRUE
     - {{ PYTHON }} -m pip install . -vv
 
@@ -23,19 +21,18 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - cmake
-    - ninja
   host:
     - pip
     - python
-    - pybind11
-    - aws-sdk-cpp
-    - pytorch
+    - pytorch 1.13.1
+    - setuptools
+    - wheel
   run:
     - python
     - requests
     - urllib3 >=1.25
     - portalocker >=2.0.0
-    - pytorch
+    - pytorch 1.13.1
 
 test:
   imports:
@@ -43,33 +40,26 @@ test:
   requires:
     - pip
     - pytest
-    - adlfs
-    - datasets
+    - datasets  # [not s390x]
     - expecttest
     - fsspec
-    - numpy *
+    - numpy
     - s3fs
   source_files:
     - test/
-  commands:
-    - pip check
-    - cd test
-    {% set tests_to_skip = "_not_a_real_test" %}
-    # flaky tests
-    {% set tests_to_skip = tests_to_skip + " or test_fsspec_memory_list" %}
-    {% set tests_to_skip = tests_to_skip + " or test_elastic_training_dl1_backend_gloo" %}
-    {% set tests_to_skip = tests_to_skip + " or test_elastic_training_dl2_backend_gloo" %}
-    # unclear this fails only on py<=39
-    {% set tests_to_skip = tests_to_skip + " or test_fsspec_io_iterdatapipe" %}  # [py<=39]
-    # test_audio_examples uses an uninstalled local folder ("examples");
-    # avoid test_text_examples due to cycle since torchtext depends on torchdata
-    - pytest -v --ignore=test_audio_examples.py --ignore=test_text_examples.py -k "not ({{ tests_to_skip }})"
 
 about:
-  home: https://github.com/pytorch/data
+  home: https://pytorch.org/
   summary: A PyTorch repo for data loading and utilities to be shared by the PyTorch domain libraries.
+  description: |
+    torchdata is a library of common modular data loading primitives for easily constructing flexible 
+    and performant data pipelines. It aims to provide composable Iterable-style and Map-style building
+    blocks called DataPipes that work well out of the box with the PyTorch's DataLoader.
+  license_family: BSD
   license: BSD-3-Clause
   license_file: LICENSE
+  dev_url: https://github.com/pytorch/data
+  doc_url: https://pytorch.org/data/beta/index.html
 
 extra:
   recipe-maintainers:
