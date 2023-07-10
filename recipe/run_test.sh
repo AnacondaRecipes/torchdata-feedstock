@@ -11,4 +11,6 @@ or test_elastic_training_dl1_backend_gloo \
 or test_elastic_training_dl2_backend_gloo \
 or test_fsspec_io_iterdatapipe \
 or test_online_iterdatapipe \
-or test_gdrive_iterdatapipe)"
+or test_gdrive_iterdatapipe \
+or test_list_files \
+or test_list_files_with_filter_mask)"
