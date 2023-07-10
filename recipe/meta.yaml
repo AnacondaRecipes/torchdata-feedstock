@@ -10,8 +10,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<37]
-  skip: true  # [ppc64le and py>=311]
+  skip: true  # [py<37 or ppc64le]
   script:
     - export USE_SYSTEM_LIBS=TRUE
     - {{ PYTHON }} -m pip install --no-deps --ignore-installed --no-build-isolation . -vv
