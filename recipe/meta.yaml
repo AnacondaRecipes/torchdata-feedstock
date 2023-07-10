@@ -15,7 +15,7 @@ build:
   skip: true  # [ppc64le and py>=311]
   script:
     - export USE_SYSTEM_LIBS=TRUE
-    - {{ PYTHON }} -m pip install . -vv
+    - {{ PYTHON }} -m pip install --no-deps --ignore-installed --no-build-isolation . -vv
 
 requirements:
   build:
