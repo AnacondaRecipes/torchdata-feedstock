@@ -12,7 +12,8 @@ build:
   number: 0
   skip: true  # [py<37 or ppc64le]
   script:
-    - export USE_SYSTEM_LIBS=TRUE
+    - set USE_SYSTEM_LIBS=TRUE  # [win]
+    - export USE_SYSTEM_LIBS=TRUE  # [unix]
     - {{ PYTHON }} -m pip install --no-deps --ignore-installed --no-build-isolation . -vv
 
 requirements:
