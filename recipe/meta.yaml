@@ -24,7 +24,8 @@ requirements:
   host:
     - pip
     - python
-    - pytorch 2.0.1
+    - pytorch 1.13.1  # [unix]
+    - pytorch 2.0.1  # [win]
     - setuptools
     - wheel
   run:
@@ -32,7 +33,7 @@ requirements:
     - requests
     - urllib3 >=1.25
     - portalocker >=2.0.0
-    - pytorch >=2.0.0
+    - pytorch >=1.13.1
 
 test:
   imports:
