@@ -10,7 +10,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<37 or ppc64le]
+  skip: true  # [py<37]
   script:
     - set USE_SYSTEM_LIBS=TRUE  # [win]
     - export USE_SYSTEM_LIBS=TRUE  # [unix]
