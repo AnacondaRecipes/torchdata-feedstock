@@ -10,7 +10,8 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<37]
+  # pytorch 2.0.x not available on ppc64le
+  skip: true  # [py<37 or ppc64le]
   script:
     - set USE_SYSTEM_LIBS=TRUE  # [win]
     - export USE_SYSTEM_LIBS=TRUE  # [unix]
@@ -24,8 +25,7 @@ requirements:
   host:
     - pip
     - python
-    - pytorch 1.13.1  # [unix]
-    - pytorch 2.0.1  # [win]
+    - pytorch 2.0.1
     - setuptools
     - wheel
   run:
@@ -33,7 +33,7 @@ requirements:
     - requests
     - urllib3 >=1.25
     - portalocker >=2.0.0
-    - pytorch >=1.13.1
+    - pytorch >=2.0.0
 
 test:
   imports:
