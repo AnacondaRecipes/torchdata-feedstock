@@ -1,4 +1,4 @@
-{% set version = "0.5.1" %}
+{% set version = "0.6.1" %}
 
 package:
   name: torchdata
@@ -6,25 +6,26 @@ package:
 
 source:
   url: https://github.com/pytorch/data/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 69d80bd33ce8f08e7cfeeb71cefddfc29cede25a85881e33dbae47576b96ed29
+  sha256: c596db251c5e6550db3f00e4308ee7112585cca4d6a1c82a433478fd86693257
 
 build:
   number: 0
-  skip: true  # [py<37]
-  skip: true  # [win]
-  skip: true  # [ppc64le and py>=311]
+  # pytorch 2.0.x not available on ppc64le
+  skip: true  # [py<37 or ppc64le]
   script:
-    - export USE_SYSTEM_LIBS=TRUE
-    - {{ PYTHON }} -m pip install . -vv
+    - set USE_SYSTEM_LIBS=TRUE  # [win]
+    - export USE_SYSTEM_LIBS=TRUE  # [unix]
+    - {{ PYTHON }} -m pip install --no-deps --ignore-installed --no-build-isolation . -vv
 
 requirements:
   build:
     - {{ compiler('cxx') }}
     - cmake
+    - ninja
   host:
     - pip
     - python
-    - pytorch 1.13.1
+    - pytorch 2.0.1
     - setuptools
     - wheel
   run:
@@ -32,7 +33,7 @@ requirements:
     - requests
     - urllib3 >=1.25
     - portalocker >=2.0.0
-    - pytorch 1.13.1
+    - pytorch >=2.0.0
 
 test:
   imports:
@@ -43,7 +44,7 @@ test:
     - datasets  # [not s390x]
     - expecttest
     - fsspec
-    - numpy
+    - {{ pin_compatible('numpy') }}
     - s3fs
   source_files:
     - test/
