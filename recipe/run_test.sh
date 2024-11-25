@@ -13,4 +13,5 @@ or test_fsspec_io_iterdatapipe \
 or test_online_iterdatapipe \
 or test_gdrive_iterdatapipe \
 or test_list_files \
+or test_lazy_imports \
 or test_list_files_with_filter_mask)"
