@@ -14,4 +14,6 @@ or test_online_iterdatapipe \
 or test_gdrive_iterdatapipe \
 or test_list_files \
 or test_lazy_imports \
+or TestMultiProcessingReadingService \
+or test_large_sampler_indices \
 or test_list_files_with_filter_mask)"
