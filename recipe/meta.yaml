@@ -25,7 +25,7 @@ requirements:
   host:
     - pip
     - python
-    - pytorch 2.3.1
+    - pytorch >=2.3.1
     - setuptools
     - wheel
   run:
@@ -44,7 +44,6 @@ test:
     - datasets  # [not s390x]
     - expecttest
     - fsspec
-    - {{ pin_compatible('numpy') }}
     - s3fs
   source_files:
     - test/
