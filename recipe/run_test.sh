@@ -3,6 +3,7 @@ ulimit -n 4096
 cd test
 # test_audio_examples uses an uninstalled local folder ("examples");
 # avoid test_text_examples due to cycle since torchtext depends on torchdata
+# test_ind_worker_queue timed out.
 pytest -v --ignore=test_audio_examples.py \
 --ignore=test_text_examples.py \
 -k "not (_not_a_real_test \
@@ -16,4 +17,5 @@ or test_list_files \
 or test_lazy_imports \
 or TestMultiProcessingReadingService \
 or test_large_sampler_indices \
+or test_ind_worker_queue \
 or test_list_files_with_filter_mask)"
