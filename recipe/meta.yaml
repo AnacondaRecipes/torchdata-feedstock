@@ -41,7 +41,7 @@ test:
   requires:
     - pip
     - pytest
-    - datasets  # [not s390x]
+    - datasets  >=2.19.1
     - expecttest
     - fsspec
     - s3fs

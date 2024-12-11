@@ -4,10 +4,13 @@ cd test
 # test_audio_examples uses an uninstalled local folder ("examples");
 # avoid test_text_examples due to cycle since torchtext depends on torchdata
 # test_ind_worker_queue timed out.
-pytest -v --ignore=stateful_dataloader/test_dataloader.py \
---ignore=stateful_dataloader/test_state_dict.py \
---ignore=test_audio_examples.py \
---ignore=test_text_examples.py \
+# ignoring tesT_dataloader.py due to time it takes to run
+# dataloader2 is depricated but not removed
+pytest -v --ignore=dataloader2 \
+ --ignore=stateful_dataloader/test_state_dict.py \
+ --ignore=test_audio_examples.py \
+ --ignore=stateful_dataloader/test_dataloader.py \
+ --ignore=test_text_examples.py \
 -k "not (_not_a_real_test \
 or test_fsspec_memory_list \
 or test_elastic_training_dl1_backend_gloo \
