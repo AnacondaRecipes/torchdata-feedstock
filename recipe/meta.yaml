@@ -10,7 +10,6 @@ source:
 
 build:
   number: 0
-  # pytorch 2.0.x not available on ppc64le
   skip: true  # [py<39 or s390x]
   script:
     - set USE_SYSTEM_LIBS=TRUE  # [win]
@@ -33,7 +32,7 @@ requirements:
     - requests
     - urllib3 >=1.25
     - portalocker >=2.0.0
-    - pytorch >=2.3.1
+    - pytorch >=2.0.0
 
 test:
   imports:
