@@ -12,35 +12,27 @@ source:
 build:
   number: 0
   skip: true  # [py<39]
-  script:
-    - set USE_SYSTEM_LIBS=TRUE  # [win]
-    - export USE_SYSTEM_LIBS=TRUE  # [unix]
-    - {{ PYTHON }} -m pip install --no-deps --ignore-installed --no-build-isolation . -vv
-
-    # from torch.testing._internal.common_utils import TestCase
-# ../../_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh/lib/python3.10/site-packages/torch/__init__.py:409: in <module>
-    # from torch._C import *  # noqa: F403
-# E   ImportError: dlopen($PREFIX/lib/python3.10/site-packages/torch/_C.cpython-310-darwin.so, 0x0002): Symbol not found: __ZN2at3mps14getMPSProfilerEv
-# E     Referenced from: <87990CDC-8638-3D8A-A1BC-5D5F1AFAC55E> $PREFIX/lib/libtorch_python.dylib
-# E     Expected in:     <EF517B96-4CE4-357A-A9AB-03F243F0861C> $PREFIX/lib/libtorch_cpu.dylib
+  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed --no-build-isolation . -vv
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
     - cmake
     - ninja
   host:
     - pip
     - python
-    - pytorch 2.7.0
     - setuptools
     - wheel
+    - pytorch {{ pytorch }}
   run:
     - python
     - requests
     - urllib3 >=1.25
     - portalocker >=2.0.0
-    - pytorch 2.7.0
+    # bounds set through run_exports:
+    - pytorch
 
 test:
   imports:
