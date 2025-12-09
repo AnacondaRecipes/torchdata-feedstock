@@ -16,8 +16,6 @@ build:
 
 requirements:
   build:
-    - {{ stdlib('c') }}
-    - {{ compiler('cxx') }}
     - cmake
     - ninja
   host:
@@ -30,7 +28,6 @@ requirements:
     - python
     - requests
     - urllib3 >=1.25
-    - portalocker >=2.0.0
     # bounds set through run_exports:
     - pytorch
 
