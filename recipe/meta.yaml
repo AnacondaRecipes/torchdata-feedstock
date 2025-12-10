@@ -1,38 +1,34 @@
-{% set version = "0.9.0" %}
+{% set name = "torchdata" %}
+{% set version = "0.11.0" %}
 
 package:
-  name: torchdata
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
   url: https://github.com/pytorch/data/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: b547bbe848ad813cc5365fe0bb02051150bec6c7c4ee7bffd6b6d3d7bdeddd75
+  sha256: 945c53a8587567624aaad2d66204fbae9acb9535696554c53ffeb83320c308b9
 
 build:
   number: 0
-  skip: true  # [py<39 or s390x]
-  script:
-    - set USE_SYSTEM_LIBS=TRUE  # [win]
-    - export USE_SYSTEM_LIBS=TRUE  # [unix]
-    - {{ PYTHON }} -m pip install --no-deps --ignore-installed --no-build-isolation . -vv
+  skip: true  # [py<39]
+  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed --no-build-isolation . -vv
 
 requirements:
   build:
-    - {{ compiler('cxx') }}
     - cmake
     - ninja
   host:
     - pip
     - python
-    - pytorch >=2.0.0
     - setuptools
     - wheel
+    - pytorch-cpu >=2.0.0
   run:
     - python
     - requests
     - urllib3 >=1.25
-    - portalocker >=2.0.0
-    - pytorch >=2.0.0
+    - pytorch-cpu >=2.0.0
 
 test:
   imports:
@@ -40,15 +36,16 @@ test:
   requires:
     - pip
     - pytest
-    - datasets  >=2.19.1
+    - datasets >=2.19.1
     - expecttest
     - fsspec
     - s3fs
+    - parameterized
   source_files:
-    - test/
+    - test
 
 about:
-  home: https://pytorch.org/
+  home: https://pytorch.org
   summary: A PyTorch repo for data loading and utilities to be shared by the PyTorch domain libraries.
   description: |
     torchdata is a library of common modular data loading primitives for easily constructing flexible 
