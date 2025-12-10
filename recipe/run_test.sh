@@ -2,18 +2,18 @@
 
 # E   ImportError: dlopen(/opt/miniconda3/conda-bld/...lib/python3.11/site-packages/torch/_C.cpython-311-darwin.so, 0x0002): 
 # Symbol not found: __ZN2at3mps14getMPSProfilerEv
-FAILED_TESTS="nodes/test_adapters.py \
-nodes/test_base_node.py \
-nodes/test_batch.py \
-nodes/test_loader.py \
-nodes/test_map.py \
-nodes/test_multi_node_weighted_sampler.py \
-nodes/test_pin_memory.py \
-nodes/test_prefetch.py \
-nodes/test_snapshot_store.py \
-stateful_dataloader/test_hugging_face.py \
-stateful_dataloader/test_incremental_state.py \
-stateful_dataloader/test_sampler.py"
+FAILED_TESTS="--ignore=nodes/test_adapters.py \
+ --ignore=nodes/test_base_node.py \
+ --ignore=nodes/test_batch.py \
+ --ignore=nodes/test_loader.py \
+ --ignore=nodes/test_map.py \
+ --ignore=nodes/test_multi_node_weighted_sampler.py \
+ --ignore=nodes/test_pin_memory.py \
+ --ignore=nodes/test_prefetch.py \
+ --ignore=nodes/test_snapshot_store.py \
+ --ignore=stateful_dataloader/test_hugging_face.py \
+ --ignore=stateful_dataloader/test_incremental_state.py \
+ --ignore=stateful_dataloader/test_sampler.py"
 
 $PYTHON -m pip check
 ulimit -n 4096
@@ -31,7 +31,7 @@ pytest -v \
  --ignore=test_audio_examples.py \
  --ignore=stateful_dataloader/test_dataloader.py \
  --ignore=test_text_examples.py \
- --ignore=$FAILED_TESTS \
+ $FAILED_TESTS \
  -k "not (_not_a_real_test \
  or test_fsspec_memory_list \
  or test_elastic_training_dl1_backend_gloo \
