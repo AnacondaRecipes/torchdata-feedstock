@@ -23,13 +23,12 @@ requirements:
     - python
     - setuptools
     - wheel
-    - pytorch {{ pytorch }}
+    - pytorch >=2.0.0
   run:
     - python
     - requests
     - urllib3 >=1.25
-    # bounds set through run_exports:
-    - pytorch
+    - pytorch >=2.0.0
 
 test:
   imports:
