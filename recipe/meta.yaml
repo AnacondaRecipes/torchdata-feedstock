@@ -36,13 +36,11 @@ test:
   requires:
     - pip
     - pytest
-    - datasets  >=2.19.1
+    - datasets >=2.19.1
     - expecttest
     - fsspec
     - s3fs
     - parameterized
-    # In version 2.7 - Symbol not found: __ZN2at3mps14getMPSProfilerEv
-    - pytorch <2.7
   source_files:
     - test
 
